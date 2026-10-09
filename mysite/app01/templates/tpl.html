@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django模板练习</title>
+    <!-- ✅新增：CSS样式 -->
+    <style>
+        .item-box{margin:10px 0; padding:12px; border:1px solid #4472c4; border-radius:6px;}
+        .tip{color:#2b7b2b; font-weight:bold;}
+    </style>
+</head>
+<body>
+<!-- ✅修改h1标题文字 -->
+<h1>Django模板语法练习</h1>
+<!-- ✅新增外层div+class，增加文字提示 -->
+<div class="item-box">
+    <span class="tip">n1字符串：</span>{{ n1 }}
+</div>
+<!-- ✅新增外层div+class，增加文字提示 -->
+<div class="item-box">
+    <span class="tip">n2完整列表：</span>{{ n2 }}
+</div>
+
+<!-- ✅每一行增加文字说明 -->
+<div>列表索引0：{{ n2.0 }}</div>
+<div>列表索引1：{{ n2.1 }}</div>
+<div>列表索引2：{{ n2.2 }}</div>
+<div>
+    循环遍历n2：
+    <!-- ✅修改：span增加内联样式，分隔符从空格改成 / -->
+    {% for item in n2 %}
+        <span style="color:#992222;">{{ item }} / </span>
+    {% endfor %}
+</div>
+<hr/>
+<!-- ✅新增外层div+class，增加文字提示 -->
+<div class="item-box">
+    <span class="tip">n3原始字典：</span>{{ n3 }}
+</div>
+<!-- ✅增加文字说明 -->
+<div>员工姓名：{{ n3.name }}</div>
+<div>员工薪资：{{ n3.salary }}</div>
+<div>员工岗位：{{ n3.role }}</div>
+
+<!-- ✅新增标题 -->
+<h3>员工信息表 n4</h3>
+<!-- ✅ul内部新增for循环，遍历n4（新传入的员工列表） -->
+<ul>
+    {% for emp in n4 %}
+        <li>岗位：{{ emp.role }} | 名字：{{ emp.name }} | 月薪：{{ emp.salary }}元</li>
+    {% endfor %}
+</ul>
+
+<hr>
+{% if n1 %}
+    <h2>嘟嘟嘟嘟</h2>
+{% endif %}
+{% if n2 %}
+    <h2>嘟嘟嘟嘟嘟</h2>
+{% endif %}
+
+</body>
+</html>
